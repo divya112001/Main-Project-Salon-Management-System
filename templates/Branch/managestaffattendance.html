@@ -1,0 +1,47 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{% extends 'Branch/branchindex.html' %}
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post" action="/managestaffattendance_post">
+  <table class="table table-striped table-dark">
+       <tr class="table-danger">
+{#        <td colspan="3"><div align="center"></div></td>#}
+    </tr>
+      <tr align="center"  class="table-danger">
+       <td  colspan="11"><h2 style="color: black"> STAFF ATTENDANCE</h2></td>
+   </tr>
+    <tr class="table-warning" >
+      <td colspan="3">Ddate
+        <label>
+        <input type="date" name="textfield" required />
+{#      To date#}
+{#      <input type="date" name="textfield2" />#}
+        <input type="submit" name="Submit" value="Search" class="btn btn-outline-warning" />
+      </label></td>
+    </tr>
+    <tr class="table-info">
+      <td>Staff</td>
+      <td>Attendance</td>
+      <td>&nbsp;</td>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td>{{ i.fname }}</td>
+      <td>&nbsp;{{ i.attendance }}</td>
+      <td></td>
+    </tr>
+      {% endfor %}
+
+  </table>
+
+
+
+</form>
+</body>
+{#</html>#}
+{% endblock %}

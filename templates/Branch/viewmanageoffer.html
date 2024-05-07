@@ -1,0 +1,104 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+
+<body>
+{% extends 'Branch/branchindex.html' %}
+{% block body %}
+<form id="form1" name="form1" method="post" action="/viewmanageoffer_search">
+  <table class="table table-striped table-dark">
+    <tr  class="table-danger">
+        <td colspan="5"><div align="center"><a href="/addoffer" class="btn btn-secondary">ADD</a></div></td>
+    </tr>
+  <tr align="center" class="table-warning">
+       <td  colspan="11"><h2 style="color: black">MANAGE OFFER</h2></td>
+   </tr>
+{#    <tr>#}
+{#      <td colspan="5">Facility#}
+{#        <label>#}
+{#        <select name="select">#}
+{#             {% for i in faci %}#}
+{#          <option value="{{ i.id }}">{{ i.Facility }}</option>#}
+{#          {% endfor %}#}
+{#        </select>#}
+{#        <input type="submit" name="Submit" value="Search" class="btn btn-outline-warning" />#}
+{#      </label></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td>Facility</td>#}
+{#      <td>Percentage</td>#}
+{#      <td>From date </td>#}
+{#      <td>To date </td>#}
+{#        <td></td>#}
+{#    </tr>#}
+{#      {% for i in val %}#}
+{#    <tr>#}
+{#      <td>{{ i.FACILITYID.Facility }}</td>#}
+{#      <td>{{ i.Percentage }}%</td>#}
+{#      <td>{{ i.Fromdate }}</td>#}
+{#      <td>{{ i.Todate }}</td>#}
+{#    <td><a href="/deleteoffer/{{ i.id }}"><i class="bi bi-trash3-fill"></i></a></td>#}
+{#    </tr>#}
+{#      {% endfor %}#}
+{#     <td colspan="5"><div align="center"></div></td>#}
+
+  </table>
+
+<table>
+
+<tr>
+
+{% for i in val %}
+<td>
+<div class="card">
+    <div class="card-content">
+{#   <img src="media/{{ i.Image.url}}" height="100px" width="100px">#}
+  </div>
+
+  <div class="card-title"> {{ i.FACILITYID.Facility  }}</div>
+  <div class="card-content">
+    <b>PERCENTAGE:</b> {{ i.Percentage }}%
+
+  </div>
+    <div class="card-content">
+    <b>FROM DATE :</b> {{ i.Fromdate }}
+         <div class="card-content">
+    <b>TO DATE :</b> {{ i.Todate }}
+
+
+  </div>
+    <div class="card-content">
+         <a href="/deleteoffer/{{ i.id }}"> <i class="bi bi-trash3-fill"></i></a>
+
+
+    </div>
+
+
+
+
+{#    <div class="card-content">#}
+{#     {{ i.Time }}#}
+{##}
+{#  </div>#}
+</div>
+</td>
+
+    {% if forloop.counter|divisibleby:4 == 0 %}
+        {% else %}
+
+    </tr><tr>
+    {% endif %}
+{% endfor %}
+</tr>
+  </table>
+
+
+
+
+</form>
+</body>
+{#</html>#}
+{% endblock %}

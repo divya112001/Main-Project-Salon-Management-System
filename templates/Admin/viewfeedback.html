@@ -1,0 +1,47 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+
+
+{% extends  'Admin/adminhomeindex.html' %}
+{% block body %}
+    <body>
+<form id="form1" name="form1" method="post" action="viewfeedbacksrch">
+  <table class="table table-dark table-stripped">
+  <tr align="center">
+       <td  colspan="11"><h2  style="color:orange"> FEEDBACK</h2></td>
+   </tr>
+    <tr>
+      <td colspan="4">Branch
+        <label>
+        <input type="date" name="textfield"  value="{{ a }}" required  />
+        <input type="submit" name="Submit" value="Search"  class="btn btn-outline-warning" /><td></td>
+      </label></td>
+    </tr>
+    <tr>
+      <td>User</td>
+      <td>Branch</td>
+      <td>Feedbacks</td>
+      <td>Ratings</td>
+      <td>Date</td>
+    </tr>
+      {% for i in val %}
+    <tr>
+
+      <td>&nbsp;{{ i.CUSTOMERID.Fname }}</td>
+      <td>{{ i.BRANCHID.Name }}</td>
+      <td>{{ i.Feedback }}</td>
+      <td>{{ i.Rating }}</td>
+      <td>{{i.Date}}</td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+</html>
+{% endblock %}
+
+

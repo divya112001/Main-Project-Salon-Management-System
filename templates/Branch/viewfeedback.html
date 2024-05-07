@@ -1,0 +1,42 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+
+<body>
+{% extends 'Branch/branchindex.html' %}
+{% block body %}
+<form id="form1" name="form1" method="post" action="feedbacksearch">
+  <table class="table table-striped table-dark">
+      <tr align="center" class="table-danger">
+       <td  colspan="11"><h2 style="color: black">VIEW FEEDBACK</h2></td>
+   </tr>
+    <tr class="table-info">
+      <td colspan="4">Date
+        <label>
+        <input type="date" name="textfield"  required/>
+        <input type="submit" name="Submit" value="Search" class="btn btn-outline-warning" />
+      </label></td>
+    </tr>
+    <tr>
+      <td>User</td>
+      <td>Feedback</td>
+      <td>Ratings</td>
+      <td>Date</td>
+    </tr>
+      {% for i in val %}
+
+    <tr>
+      <td>{{ i.CUSTOMERID.Fname }}&nbsp;</td>
+      <td>{{ i.Feedback }}</td>
+      <td>{{i.Rating  }}</td>
+      <td>{{ i.Date }}</td>
+        {% endfor %}
+    </tr>
+  </table>
+</form>
+</body>
+{#</html>#}
+{% endblock %}

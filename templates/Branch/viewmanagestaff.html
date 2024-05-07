@@ -1,0 +1,119 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+
+<body>
+{% extends 'Branch/branchindex.html' %}
+{% block body %}
+
+<form id="form1" name="form1" method="post" action="/searchstaff">
+  <table class="table table-striped table-dark">
+  <tr class="table-danger"><td colspan="12"><div align="center"><a href="/addstaff" class="btn btn-secondary">ADD</a></div></td>
+    </tr>
+  <tr align="center" class="table-warning">
+       <td  colspan="11"><h2 style="color:black;"> STAFF</h2></td>
+   </tr>
+    <tr class="table-info">
+      <td colspan="12">Name
+        <label>
+        <input type="text" name="textfield" required pattern="[A-Z a-z .]{2,25}"  />
+        <input type="submit" name="Submit" value="Search"  class="btn btn-outline-warning" />
+      </label></td>
+    </tr>
+{#    <tr>#}
+{#      <td>Name</td>#}
+{#      <td>Gender</td>#}
+{#      <td>DOB</td>#}
+{#      <td>Phone</td>#}
+{#      <td>Image</td>#}
+{#      <td>Adhar number </td>#}
+{#      <td>Email</td>#}
+{#      <td>Basic pay </td>#}
+{#      <td></td>#}
+{#        <td></td>#}
+{##}
+{#    </tr>#}
+{#      {% for i in val %}#}
+{#    <tr>#}
+{#      <td>{{ i.Fname }}</td>#}
+{#      <td>{{ i.Gender}}</td>#}
+{#      <td>{{ i.DOB }}</td>#}
+{#        <td>{{ i.Phone }}</td>#}
+{#      <td><img src="media/{{ i.image}}" height="100px" width="100px"></td>#}
+{#        <td>{{ i.Adharnumber }}</td>#}
+{#        <td>{{ i.Email }}</td>#}
+{#      <td>{{ i.Basicpay }}</td>#}
+{#      <td><a href="#"></a></td>#}
+{#      <td><p>&nbsp;</p>#}
+{#          <p><a href="editstaff/{{ i.id }}"><i class="bi bi-pencil-square"></i></a></p>#}
+{#      <p><a href="deletestff/{{ i.id }}"><i class="bi bi-trash3-fill"></i></a></p>#}
+{#     <p><a href="adssign">Assign</a></p></td>#}
+{#    </tr>#}
+{#      {% endfor %}#}
+
+
+  </table>
+<table>
+
+<tr>
+
+{% for i in val %}
+<td>
+<div class="card">
+    <div class="card-content">
+   <img src="media/{{ i.image }}" height="100px" width="100px">
+  </div>
+
+  <div class="card-title"> {{ i.Facility  }}</div>
+  <div class="card-content">
+    <b>NAME:</b> {{ i.Fname }}
+
+  </div>
+    <div class="card-content">
+    <b>GENDER:</b> {{ i.Gender }}
+
+         <div class="card-content">
+    <b>DOB:</b> {{ i.DOB }}
+              <div class="card-content">
+    <b>PHONE:</b> {{ i.Phone }}
+                   <div class="card-content">
+    <b>EMAIL:</b> {{ i.Email }}
+                        <div class="card-content">
+    <b>ADHAR NUMBER:</b> {{ i.Adharnumber }}
+                             <div class="card-content">
+    <b>BASIC PAY:</b> {{ i.Basicpay }}
+
+
+
+
+  </div>
+    <div class="card-content">
+        <a href="/editstaff/{{ i.id }}"><i class="bi bi-pencil-square"></i> </a>  &nbsp;&nbsp;&nbsp;&nbsp; <a href="/deletestff/{{ i.LOGIN.id }}"> <i class="bi bi-trash3-fill"></i></a>
+
+
+    </div>
+
+
+
+
+{#    <div class="card-content">#}
+{#     {{ i.Time }}#}
+{##}
+{#  </div>#}
+</div>
+</td>
+
+    {% if forloop.counter|divisibleby:4 == 0 %}
+        {% else %}
+    </tr><tr>
+    {% endif %}
+{% endfor %}
+</tr>
+  </table>
+</form>
+</body>
+{#</html>#}
+{% endblock %}

@@ -1,0 +1,110 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{% extends 'Admin/adminhomeindex.html' %}
+{% block body %}
+<body>
+
+<form id="form1" name="form1" method="post" action="searchbranch">
+  <table class="table table-dark table-stripped">
+       <tr class="table-warning">
+      <td colspan="6"><div align="center"><a href="addbranches" class="btn btn-secondary">ADD</a></div></td>
+    </tr>
+  <tr align="center" class="table-danger">
+       <td  colspan="11"><h2  style="color:black">MANAGE BRANCHES</h2></td>
+   </tr>
+
+    <tr class="table-info">
+      <td colspan="6">Branch Name
+        <input type="text" name="textfield"  required pattern="[A-Z a-z .]{2,25}" />
+        <input type="submit" name="Submit" value="Search" class="btn btn-outline-warning" />
+      </td>
+    </tr>
+{#    <tr>#}
+{#      <td>Name</td>#}
+{#      <td>Address</td>#}
+{#      <td>Phone</td>#}
+{#      <td>Email</td>#}
+{##}
+{#      <td></td>#}
+{#    </tr>#}
+{#      {% for i in val %}#}
+{#    <tr>#}
+{#      <td>&nbsp;{{ i.Name }}</td>#}
+{#      <td>Place:{{ i.Place}}<br>#}
+{#          Post:{{i.post}}<br>Pin:{{i.Pin }}</td>#}
+{#      <td>{{ i.Phone }}</td>#}
+{#      <td>{{  i.Email}}</td>#}
+{##}
+{#        <td><p><a href="/editbranch/{{ i.id }}" class="btn btn-outline-warning"> <i class="bi bi-pencil-square"></i></a></p>#}
+{#        <p><a href="/deletebranch/{{ i.LOGIN.id }}" class="btn btn-outline-warning"> Delete</a></p></td>#}
+{#    </tr>#}
+{#      {% endfor %}#}
+
+  </table>
+<table>
+
+<tr>
+
+{% for i in val %}
+<td>
+<div class="card">
+    <div class="card-content">
+{#   <img src="media/{{ i.Image }}" height="100px" width="100px">#}
+  </div>
+
+  <div class="card-title"><b><u>{{ i.Name  }}</u></b> </div>
+  <div class="card-content">
+   <b>PLACE:</b>  {{ i.Place }}
+
+  </div>
+    <div class="card-content">
+    <b>POST:</b> {{ i.post }}
+    </div>
+         <div class="card-content">
+    <b>PIN:</b> {{ i.Pin }}
+         </div>
+              <div class="card-content">
+    <b>PHONE:</b> {{ i.Phone }}
+              </div>
+
+      <div class="card-content">
+   <b>EMAIL:</b>  {{ i.Email }}
+              </div>
+
+ <div class="card-content">
+        <a href="/editbranch/{{ i.id }}"><i class="bi bi-pencil-square"></i> </a>  &nbsp;&nbsp;&nbsp;&nbsp; <a href="/deletebranch/{{ i.LOGIN.id }}"> <i class="bi bi-trash3-fill"></i></a>
+
+
+    </div>
+
+
+  </div>
+
+
+
+
+
+{#    <div class="card-content">#}
+{#     {{ i.Time }}#}
+{##}
+{#  </div>#}
+</div>
+</td>
+
+    {% if forloop.counter|divisibleby:4 == 0 %}
+        {% else %}
+{#        {{ forloop.counter }}#}
+    </tr><tr>
+    {% endif %}
+{% endfor %}
+</tr>
+  </table>
+</form>
+{% endblock %}
+{#</body>#}
+{#</html>#}

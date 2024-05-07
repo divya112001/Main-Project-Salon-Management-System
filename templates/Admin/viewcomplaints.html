@@ -1,0 +1,46 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{% extends 'Admin/adminhomeindex.html' %}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="viewcomplaintssrch">
+  <table width="311" border="1"  class="table table-striped table-dark">
+      <tr align="center" class="table-danger">
+       <td  colspan="11"><h2  style="color:black">VIEW COMPLAINT</h2></td>
+   </tr>
+    <tr>
+      <td colspan="4">Date
+        <label>
+        <input type="date" name="textfield" value="{{ a }}" />
+        <input type="submit" name="Submit" value="Search" class="btn btn-outline-warning"/>
+      </label></td>
+    </tr>
+    <tr>
+      <td>User</td>
+      <td>Complaint</td>
+      <td>Date</td>
+      <td>&nbsp;</td>
+    </tr>
+      {% for i in val %}
+    <tr>
+      <td height="47">{{i.CUSTOMERID.Fname}}&nbsp;</td>
+      <td>{{ i.Complaint }}</td>
+      <td>{{ i.Date }}</td>
+        {% if i.Reply == 'pending' %}
+      <td><a href="sendreply/{{ i.id }}" class="btn btn-outline-warning">Reply</a></td>
+    {% else %}
+    <td>{{ i.Reply }}</td>
+    {% endif %}
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+
+</body>
+{% endblock %}
+{#</html>#}

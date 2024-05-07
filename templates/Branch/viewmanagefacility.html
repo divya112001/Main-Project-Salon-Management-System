@@ -1,0 +1,88 @@
+<body>
+{% extends 'Branch/branchindex.html' %}
+{% block body %}
+<form id="form1" name="form1" method="post" action="/searchviewmanagefacility">
+  <table class="table table-bordered">
+   <tr   class="table-danger"><td colspan="6"><div align="center"> <a href="/addfacility"class="btn btn-secondary">ADD</a> </div></td></tr>
+  <tr  class="table-warning" align="center">
+       <td  colspan="11"><h2  style="color:black"> FACILITY</h2></td>
+   </tr>
+
+    <tr   class="table-info">
+        <td colspan="1"><b>FACILITY</b></td>
+        <td colspan="4">
+        <input type="text" name="textfield" required class="form-control"/>
+
+      </td><td> <input type="submit" name="Submit" value="Search"  class="btn btn-warning"/></td>
+    </tr>
+{#    <tr>#}
+{#      <td>Facility</td>#}
+{#      <td>Details</td>#}
+{#      <td>Image</td>#}
+{#      <td>Price</td>#}
+{#      <td width="125">&nbsp;Time</td>#}
+{#        <td></td>#}
+{#    </tr>#}
+{#      {% for i in data %}#}
+{#    <tr>#}
+{#      <td>&nbsp;{{ i.Facility }}</td>#}
+{#      <td>{{ i.Details }}</td>#}
+{#      <td><img src="media/{{ i.Image }}" height="100px" width="100px"></td>#}
+{#      <td>{{i.Price  }}</td>#}
+{#      <td>{{i.Time  }}</td>#}
+{#        <td><p><a href="/editfacility/{{ i.id }}"><i class="bi bi-pencil-square"></i> </a></p>#}
+{#      <p><a href="/deletetfacility/{{ i.id }}"><i class="bi bi-trash3-fill"></i></a></p></td>#}
+{#    </tr>#}
+{#      {% endfor %}#}
+
+  </table>
+<table>
+
+<tr>
+
+{% for i in data %}
+<td>
+<div class="card">
+    <div class="card-content">
+   <img src="media/{{ i.Image }}" height="100px" width="100px">
+  </div>
+
+  <div class="card-title">{{ i.Facility  }}</div>
+  <div class="card-content">
+      <div  class="ex1"><b>DETAILS :</b>{{ i.Details }}</div>
+
+  </div>
+    <div class="card-content">
+        ₹ {{ i.Price }}</div>
+             <div class="card-content">
+    <b>TIME:</b>  {{ i.Time }} Minutes
+
+  </div>
+    <div class="card-content">
+        <a href="/editfacility/{{ i.id }}"><i class="bi bi-pencil-square"></i> </a>  &nbsp;&nbsp;&nbsp;&nbsp <a href="/deletetfacility/{{ i.id }}"> <i class="bi bi-trash3-fill"></i></a>
+
+
+    </div>
+
+
+
+
+{#    <div class="card-content">#}
+{#     {{ i.Time }}#}
+{##}
+{#  </div>#}
+</div>
+</td>
+
+    {% if forloop.counter|divisibleby:4 == 0 %}
+        {% else %}
+
+    </tr><tr>
+    {% endif %}
+{% endfor %}
+</tr>
+  </table>
+</form>
+</body>
+{#</html>#}
+{% endblock %}

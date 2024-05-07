@@ -1,0 +1,105 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{% extends 'Branch/branchindex.html' %}
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post" action="/moredetailssearch">
+  <table class="table table-dark table-stripped">
+  <tr align="center" class="table-danger">
+       <td  colspan="11"><h2  style="color:black">VIEW BOOKING FACILITY</h2></td>
+   </tr>
+{#    <tr class="table-info">#}
+{#      <td colspan="9">Date#}
+{#        <label>#}
+{#        <input type="date" name="textfield" required />#}
+{#        <input type="submit" name="Submit" value="Search" class="btn btn-outline-warning" />#}
+{#      </label></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td>slno</td>#}
+{##}
+{#      <td>User</td>#}
+{#      <td>Date</td>#}
+{#      <td>Time</td>#}
+{#      <td>Status</td>#}
+{#        <td></td>#}
+{##}
+{#    </tr>#}
+{#      {% for i in val %}#}
+{#    <tr>#}
+{#      <td>{{ forloop.counter }}</td>#}
+{#      <td>&nbsp;{{ i.BOOKINGID.Date }}</td>#}
+{#      <td>{{i.BOOKINGID.Time }}</td>#}
+{#      <td>&nbsp;{{ i.BOOKINGID.Status}}</td>#}
+{#      <td>&nbsp;</td>#}
+{##}
+{#      <td><p><a href="/generatebill">Bill</a></p>#}
+{#        <p><a href="#">Cancel </a></p>#}
+{#      <p><a href="#">Reject</a></p></td>#}
+{#    </tr>#}
+{#      {% endfor %}#}
+  </table>
+    <table>
+
+<tr>
+
+{% for i in val %}
+<td>
+<div class="card">
+    <div class="card-content">
+   {{ forloop.counter }}
+  </div>
+
+  <div class="card-title"></div> {{ i.FACILITYID.Facility }}
+  <div class="card-content">
+    {{ i.BOOKINGID.Time}}
+
+  </div>
+    <div class="card-content">
+     Offer : {{  i.offer.Percentage }}<p></p>
+
+
+        {% if i.status == 'pending' %}
+               {{ 'pending' }}
+{#        <a href="/acceptfacility/{{ i.id }}">Accept</a><p></p>#}
+{#        <a href="/rejecttfacility/{{ i.id }}">Reject</a>#}
+        {% elif i.status == 'reject' %}
+        {{ 'reject' }}
+    {% else %}
+    {{ 'accept' }}
+    {% endif %}
+
+  </div>
+
+{#    <div class="card-content">#}
+{#        <a href="/acceptbookings/{{ i.BOOKINGID.id }}"><i class="bi bi-bag-check-fill"></i> </a>  &nbsp;&nbsp;&nbsp;&nbsp; <a href="/rejectbookings/{{ i.BOOKINGID.id }}"> <i class="bi bi-bag-x"></i></a> <a align="right" href="/moredetails/{{ i.id }}">Details</a>#}
+{##}
+{##}
+{#    </div>#}
+
+
+
+
+{#    <div class="card-content">#}
+{#     {{ i.Time }}#}
+{##}
+{#  </div>#}
+</div>
+</td>
+
+    {% if forloop.counter|divisibleby:4 == 0 %}
+        {% else %}
+
+    </tr> <tr>
+    {% endif %}
+{% endfor %}
+</tr>
+  </table>
+</form>
+</body>
+{#</html>#}
+{% endblock %}

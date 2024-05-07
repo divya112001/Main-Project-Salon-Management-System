@@ -1,0 +1,91 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+
+<body>
+{% extends 'Branch/branchindex.html' %}
+{% block body %}
+<form id="form1" name="form1" method="post" action="/searchviewmanageinventory">
+  <table class="table table-striped table-dark">
+  <tr class="table-danger">
+        <td colspan="5"><div align="center"><a href="/addinventory" class="btn btn-outline-warning">ADD</a></div></td>
+    </tr>
+  <tr align="center" class="table-warning">
+       <td  colspan="11"><h2  style="color:black"> INVENTORY</h2></td>
+   </tr>
+    <tr class="table-info">
+      <td colspan="5"><b>NAME</b>
+        <label>
+        <input type="text" name="textfield" required pattern="[A-Z a-z .]{2,25}"  />
+        <input type="submit" name="Submit" value="Search" class="btn btn-outline-warning" />
+      </label></td>
+    </tr>
+{#    <tr>#}
+{#      <td>Name</td>#}
+{#      <td>Quantity</td>#}
+{#      <td>Details</td>#}
+{#      <td>&nbsp;</td>#}
+{#      <td></td>#}
+{#    </tr>#}
+{#      {% for i in val%}#}
+{#    <tr>#}
+{#      <td>{{ i.Name }}</td>#}
+{#      <td>&nbsp;{{ i.Quantity }}</td>#}
+{#      <td>{{ i.Details }}</td>#}
+{#        <td><a href="/editinventory/{{ i.id }}"><i class="bi bi-pencil-square"></i></a></td>#}
+{#      <td><a href="/deleteinventory/{{ i.id }}"><i class="bi bi-trash3-fill"></i></a></td>#}
+{#    </tr>#}
+{#      {% endfor %}#}
+
+  </table>
+
+<table>
+
+<tr>
+
+{% for i in val %}
+<td>
+<div class="card">
+    <div class="card-content">
+{#   <img src="media/{{ i.Image }}" height="100px" width="100px">#}
+  </div>
+
+  <div class="card-title"> {{ i.Name  }}</div>
+  <div class="card-content" >
+   <b>DETAILS:</b>{{ i.Details }}
+
+  </div>
+    <div class="card-content">
+    <b>QUANTITY:</b> {{ i.Quantity }}
+
+  </div>
+    <div class="card-content">
+        <a href="/editinventory/{{ i.id }}"><i class="bi bi-pencil-square"></i> </a>  &nbsp;&nbsp;&nbsp;&nbsp; <a href="/deleteinventory/{{ i.id }}"> <i class="bi bi-trash3-fill"></i></a>
+
+
+    </div>
+
+
+
+
+{#    <div class="card-content">#}
+{#     {{ i.Time }}#}
+{##}
+{#  </div>#}
+</div>
+</td>
+
+    {% if forloop.counter|divisibleby:4 == 0 %}
+        {% else %}
+    </tr><tr>
+    {% endif %}
+{% endfor %}
+</tr>
+  </table>
+</form>
+</body>
+{#</html>#}
+{% endblock %}

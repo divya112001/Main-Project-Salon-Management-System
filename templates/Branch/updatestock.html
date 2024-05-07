@@ -1,0 +1,94 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{% extends 'Branch/branchindex.html' %}
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post" action="/updatestock_post">
+  <table class="table table-striped table-dark">
+        <tr align="center">
+       <td   colspan="11"><h2 style="color:orange">UPDATE STOCK</h2></td>
+   </tr>
+      <tr>
+          <td>
+              <table class="table">
+                  <tr>
+                      <td></td>
+                      <td><img src="{{ pr.Photo.url }}" height="100px" width="100px"></td>
+                  </tr>
+                  <tr>
+                  <td>Name</td>
+                  <td>{{ pr.Product }}</td>
+                  </tr>
+              </table>
+          </td>
+          <td></td>
+         
+      </tr>
+
+
+{#    <tr>#}
+{#      <td width="300px">Cosmetic</td>#}
+{#      <td><input type="text" name="textfield"/></td>#}
+{#    </tr>#}
+    <tr>
+      <td width="300px">Net Quantity</td>
+      <td><input type="text"  name="textfield1" required/>
+      <input type="hidden" name="cosid" value="{{ cosid }}" autocomplete="off" class="form-control" required/></td>
+    </tr>
+    <tr>
+      <td width="300px">No.of units </td>
+      <td><input type="text"  name="textfield2"  autocomplete="off" required/>&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="300px">Manufacturing date </td>
+      <td><input type="date"  name="textfield3" max="{{ d }}" required/></td>
+    </tr>
+    <tr>
+      <td width="300px">Expiring date </td>
+      <td><input type="date"  name="textfield4" min="{{ d }}"  required/> </td>
+    </tr>
+    <tr>
+      <td width="300px">Price</td>
+      <td><input type="number"  name="textfield5" autocomplete="off"  required/>&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <div align="center">
+          <input type="submit" name="Submit" value="Add" class="btn btn-outline-warning" />
+          </div>
+      </td>
+    </tr>
+  </table>
+    <table class="table table-striped table-dark" >
+    <tr align="center">
+       <td   colspan="11"><h2 style="color:orange">STOCK DETAILS</h2></td>
+   </tr>
+         <tr>
+      <td>Quantity</td>
+      <td>Manufacture date</td>
+      <td>Expiring date </td>
+      <td>Price</td>
+        <td></td>
+    </tr>
+      {% for i in stock %}
+    <tr>
+      <td>{{ i.Quantity }}</td>
+      <td>{{ i.Manufacturedate }}</td>
+      <td>{{ i.Expiringdate }}</td>
+      <td>{{ i.Price }} Rs/-</td>
+    <td><a href="/deletestock/{{ i.id }}/{{ cosid }}">Delete</a></td>
+    </tr>
+      {% endfor %}
+     <td colspan="5"><div align="center"></div></td>
+
+    </table>
+</form>
+
+
+</body>
+{#</html>#}
+{% endblock %}

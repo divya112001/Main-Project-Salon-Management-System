@@ -1,0 +1,101 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+
+<body>
+{% extends 'Branch/branchindex.html' %}
+{% block body %}
+<form id="form1" name="form1" method="post" action="/addrental">
+  <table class="table table-striped table-dark">
+{#   <tr><td colspan="6"><a href="/addrental">ADD</a></td></tr>#}
+{#   <tr><td colspan="6"><a href="/addrental">ADD</a></td></tr>#}
+          <tr  class="table-danger"><td colspan="6" align="center"><a href="/addrental"  class="btn btn-secondary">ADD</a> </td></tr>
+<tr class="table-warning" align="center">
+       <td  colspan="11"><h2 style="color: black">MANAGE RENTALS</h2></td>
+   </tr>
+
+    <tr  class="table-info">
+      <td colspan="6"><b>PRODUCT</b>
+
+        <input type="text" name="textfield"  required pattern="[A-Z a-z .]{2,25}"  />
+        <input type="submit" name="Submit" value="Search"  class="btn btn-outline-warning" />
+      </td>
+    </tr>
+{#    <tr>#}
+{#      <td>Product</td>#}
+{#      <td>Description</td>#}
+{#      <td>Image</td>#}
+{#      <td>Price</td>#}
+{#      <td>&nbsp;</td>#}
+{#      <td>&nbsp;</td>#}
+{#    </tr>#}
+{#      {% for i in val %}#}
+{#    <tr>#}
+{#      <td>&nbsp;{{ i.Product }}</td>#}
+{#      <td>{{ i.Description }}</td>#}
+{#      <td><img src="media/{{ i.Image }}" height="100px" width="100px"></td>#}
+{#      <td>&nbsp;{{ i.price }}</td>#}
+{#        <td><a href="/editrental/{{ i.id }}"><i class="bi bi-pencil-square"></i></a></td>#}
+{#      <td><a href="/deleterental/{{ i.id }}"><i class="bi bi-trash3-fill"></i></a></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td colspan="6">&nbsp;</td>#}
+{#    </tr>#}
+{#      {% endfor %}#}
+
+
+
+  </table>
+<table>
+
+<tr>
+
+{% for i in val %}
+<td>
+<div class="card">
+    <div class="card-content">
+   <img src="media/{{ i.Image }}" height="100px" width="100px">
+  </div>
+
+  <div class="card-title"> {{ i.Product  }}</div>
+  <div class="card-content">
+      <div  class="ex1"><b>Description:</b> {{ i.Description }}</div>
+
+  </div>
+    <div class="card-content">
+     <b>Price:</b> {{ i.price }}
+  </div>
+    <div class="card-content">
+     <b>Quantity:</b> {{ i.quantity }}
+  </div>
+    <div class="card-content">
+        <a href="/editrental/{{ i.id }}"><i class="bi bi-pencil-square"></i> </a>  &nbsp;&nbsp;&nbsp;&nbsp; <a href="/deleterental/{{ i.id }}"> <i class="bi bi-trash3-fill"></i></a>
+
+
+    </div>
+
+
+
+
+{#    <div class="card-content">#}
+{#     {{ i.Time }}#}
+{##}
+{#  </div>#}
+</div>
+</td>
+
+    {% if forloop.counter|divisibleby:4 == 0 %}
+        {% else %}
+
+    </tr><tr>
+    {% endif %}
+{% endfor %}
+</tr>
+  </table>
+</form>
+</body>
+{#</html>#}
+{% endblock %}
