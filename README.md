@@ -1,4 +1,4 @@
-# Main-Project-Salon-Management-System
+# Main-Project-SMART SALON
 
 
 Introduction
